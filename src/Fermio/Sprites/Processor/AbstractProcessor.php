@@ -1,31 +1,21 @@
 <?php
 
 /*
- * This file is part of the Sprites package.
+ * This file is part of the Fermio Sprites package.
  *
- * (c) Pierre Minnieur <pm@pierre-minnieur.de>
+ * (c) Pierre Minnieur <pierre@ferm.io>
  *
  * For the full copyright and license information, please view the LICENSE file
  * that was distributed with this source code.
  */
 
-namespace Sprites\Processor;
+namespace Fermio\Sprites\Processor;
 
-use Sprites\Configuration;
-
-use Phly\Mustache\Mustache;
-
+use Fermio\Sprites\Configuration;
 use Imagine\Image\ImageInterface;
 
 abstract class AbstractProcessor implements ProcessorInterface
 {
-    /**
-     * A Mustache instance.
-     *
-     * @var Mustache
-     */
-    protected $mustache;
-
     /**
      * An array of options.
      *
@@ -87,31 +77,19 @@ abstract class AbstractProcessor implements ProcessorInterface
     /**
      * Parses the CSS selector.
      *
-     * @param string $selector The CSS selector
-     * @param \SplFileInfo $file The SplFileInfo instance
-     * @param integer $pointer The current pointer
+     * @param  string       $selector The CSS selector
+     * @param  \SplFileInfo $file     The SplFileInfo instance
+     * @param  integer      $x        The horizontal position
+     * @param  integer      $y        (optional) The vertical position
      * @return string
      */
-    protected function parseSelector($selector, \SplFileInfo $file, $pointer)
+    protected function parseSelector($selector, \SplFileInfo $file, $x, $y = 0)
     {
-        return $this->getMustache()->render($selector, array(
-            'filename' => $this->asciify($file),
-            'pointer' => $pointer
-        ));
-    }
-
-    /**
-     * Returns a Mustache instance.
-     *
-     * @return Mustache
-     */
-    protected function getMustache()
-    {
-        if (null === $this->mustache) {
-            $this->mustache = new Mustache();
-        }
-
-        return $this->mustache;
+        return str_replace(
+            array('{{filename}}', '{{x}}', '{{y}}'),
+            array($this->asciify($file), $x, $y),
+            $selector
+        );
     }
 
     /**
@@ -142,9 +120,9 @@ abstract class AbstractProcessor implements ProcessorInterface
     /**
      * Saves the image sprite and stylesheet.
      *
-     * @param \Falsep\Sprites\Configuration $config The Configuration instance
-     * @param \Imagine\ImageInterface $image The ImageInterface instance
-     * @param string $styles The CSS stylesheet
+     * @param  Configuration  $config The Configuration instance
+     * @param  ImageInterface $image  The ImageInterface instance
+     * @param  string         $styles The CSS stylesheet
      * @return void
      *
      * @throws \RuntimeException If the image sprite could not be saved
@@ -173,7 +151,7 @@ abstract class AbstractProcessor implements ProcessorInterface
     /**
      * Creates the given directory.
      *
-     * @param array|string $paths An array of directories or a single directory
+     * @param  array|string $paths An array of directories or a single directory
      * @return void
      *
      * @throws \RuntimeException If a directory cannot be created

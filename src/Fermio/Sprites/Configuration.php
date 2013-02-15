@@ -1,20 +1,19 @@
 <?php
 
 /*
- * This file is part of the Sprites package.
+ * This file is part of the Fermio Sprites package.
  *
- * (c) Pierre Minnieur <pm@pierre-minnieur.de>
+ * (c) Pierre Minnieur <pierre@ferm.io>
  *
  * For the full copyright and license information, please view the LICENSE file
  * that was distributed with this source code.
  */
 
-namespace Sprites;
-
-use Symfony\Component\Finder\Finder;
+namespace Fermio\Sprites;
 
 use Imagine\Image\ImagineInterface;
 use Imagine\Image\Color;
+use Symfony\Component\Finder\Finder;
 
 class Configuration
 {
@@ -24,7 +23,7 @@ class Configuration
     /**
      * The ImagineInterface instance.
      *
-     * @var \Imagine\ImagineInterface
+     * @var ImagineInterface
      */
     private $imagine;
 
@@ -45,7 +44,7 @@ class Configuration
     /**
      * The Finder instance.
      *
-     * @var \Symfony\Component\Finder\Finder
+     * @var Finder
      */
     private $finder;
 
@@ -59,7 +58,7 @@ class Configuration
     /**
      * The Color instance.
      *
-     * @var \Imagine\Image\Color
+     * @var Color
      */
     private $color;
 
@@ -82,12 +81,12 @@ class Configuration
      *
      * @var string
      */
-    private $selector = ".{{filename}}{background-position:{{pointer}}px 0px}\n";
+    private $selector = ".{{filename}}{background-position:{{x}}px {{y}}px}\n";
 
     /**
      * Returns the ImagineInterface instance.
      *
-     * @return \Imagine\ImagineInterface
+     * @return ImagineInterface
      */
     public function getImagine()
     {
@@ -97,7 +96,7 @@ class Configuration
     /**
      * Sets the ImagineInterface instance.
      *
-     * @param \Imagine\ImagineInterface $imagine The ImagineInterface instance
+     * @param  ImagineInterface $imagine The ImagineInterface instance
      * @return void
      */
     public function setImagine(ImagineInterface $imagine)
@@ -118,7 +117,7 @@ class Configuration
     /**
      * Sets the save() options for the Image instance.
      *
-     * @param array $options
+     * @param  array $options
      * @return void
      */
     public function setOptions(array $options)
@@ -129,7 +128,7 @@ class Configuration
     /**
      * Returns the Finder instance.
      *
-     * @return \Symfony\Component\Finder\Finder
+     * @return Finder
      */
     public function getFinder()
     {
@@ -144,7 +143,7 @@ class Configuration
     /**
      * Sets the Finder instance.
      *
-     * @param \Symfony\Component\Finder\Finder $finder The Finder instance
+     * @param  Finder $finder The Finder instance
      * @return void
      */
     public function setFinder(Finder $finder)
@@ -165,7 +164,7 @@ class Configuration
     /**
      * Sets the target image path.
      *
-     * @param string $path The target image path
+     * @param  string $path The target image path
      * @return void
      */
     public function setImage($path)
@@ -176,7 +175,7 @@ class Configuration
     /**
      * Returns the Color instance.
      *
-     * @return \Imagine\Image\Color
+     * @return Color
      */
     public function getColor()
     {
@@ -186,7 +185,7 @@ class Configuration
     /**
      * Sets the Color instance.
      *
-     * @param \Imagine\Image\Color $color The Color instance.
+     * @param  Color $color The Color instance.
      * @return void
      */
     public function setColor(Color $color)
@@ -215,7 +214,7 @@ class Configuration
     /**
      * Sets the name of the image ProcessorInterface instance to use.
      *
-     * @param string $name The ProcessorInterface name
+     * @param  string $name The ProcessorInterface name
      * @return void
      */
     public function setProcessor($name)
@@ -236,7 +235,7 @@ class Configuration
     /**
      * Sets the fixed width per image.
      *
-     * @param integer $width The fixed with per image
+     * @param  integer $width The fixed with per image
      * @return void
      */
     public function setWidth($width)
@@ -257,7 +256,7 @@ class Configuration
     /**
      * Sets the target stylesheet path.
      *
-     * @param string $path The target stylesheet path
+     * @param  string $path The target stylesheet path
      * @return void
      */
     public function setStylesheet($path)
@@ -278,7 +277,7 @@ class Configuration
     /**
      * Sets the CSS selector.
      *
-     * @param string $selector The CSS selector
+     * @param  string $selector The CSS selector
      * @return void
      */
     public function setSelector($selector)

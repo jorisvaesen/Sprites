@@ -1,25 +1,25 @@
 <?php
 
 /*
- * This file is part of the Sprites package.
+ * This file is part of the Fermio Sprites package.
  *
- * (c) Pierre Minnieur <pm@pierre-minnieur.de>
+ * (c) Pierre Minnieur <pierre@ferm.io>
  *
  * For the full copyright and license information, please view the LICENSE file
  * that was distributed with this source code.
  */
 
-namespace Sprites\Tests\Processor;
+namespace Fermio\Sprites\Tests\Processor;
 
-use Sprites\Configuration;
-use Sprites\Processor\AbstractProcessor;
+use Fermio\Sprites\Configuration;
+use Fermio\Sprites\Processor\AbstractProcessor;
 
 class TestProcessor extends AbstractProcessor
 {
     /**
      * Constructor.
      *
-     * @param array $options (optional) An array of options.
+     * @param  array $options (optional) An array of options.
      * @return void
      */
     public function __construct(array $options = array())

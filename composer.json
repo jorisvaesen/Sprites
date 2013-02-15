@@ -1,31 +1,26 @@
 {
-    "name": "pminnieur/sprites",
+    "name": "fermio/sprites",
     "type": "library",
     "description": "A simple image sprite and stylesheet generator.",
     "keywords": ["sprites"],
-    "homepage": "http://sprites.readthedocs.org/",
+    "homepage": "https://github.com/fermio/Sprites",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Pierre Minnieur",
-            "email": "pm@pierre-minnieur.de"
-        }
-    ],
-
+    "authors": [{
+        "name": "Pierre Minnieur",
+        "email": "pierre@ferm.io",
+        "homepage": "http://ferm.io/"
+    }],
     "require": {
-        "php": ">=5.3.2",
-        "phly/mustache": "1.0.*",
-        "imagine/Imagine": "0.2.*",
-        "symfony/console": "2.0.*",
-        "symfony/finder": "2.0.*"
+        "php": "~5.3",
+        "imagine/Imagine": "*",
+        "symfony/console": "~2.0",
+        "symfony/finder": "~2.0"
     },
-
     "autoload": {
         "psr-0": {
-            "Sprites": "src"
+            "Fermio\\Sprites\\": "src"
         }
     },
-
     "config": {
         "bin-dir": "bin"
     }

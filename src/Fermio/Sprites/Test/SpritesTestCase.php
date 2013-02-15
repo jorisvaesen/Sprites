@@ -1,26 +1,23 @@
 <?php
 
 /*
- * This file is part of the Sprites package.
+ * This file is part of the Fermio Sprites package.
  *
- * (c) Pierre Minnieur <pm@pierre-minnieur.de>
+ * (c) Pierre Minnieur <pierre@ferm.io>
  *
  * For the full copyright and license information, please view the LICENSE file
  * that was distributed with this source code.
  */
 
-namespace Sprites\Test;
+namespace Fermio\Sprites\Test;
 
+use Fermio\Sprites\Test\Constraint\IsImageEqual;
 use Imagine\Gd;
 use Imagine\Gmagick;
 use Imagine\Imagick;
 use Imagine\Image\Color;
-use Imagine\Test\ImagineTestCase;
 
-/**
- * @codeCoverageIgnore
- */
-class SpritesTestCase extends ImagineTestCase
+class SpritesTestCase extends \PHPUnit_Framework_TestCase
 {
     /**
      * {@inheritDoc}
@@ -43,7 +40,7 @@ class SpritesTestCase extends ImagineTestCase
     /**
      * Creates the given directory.
      *
-     * @param string $directory
+     * @param  string $directory
      * @return void
      *
      * @throws \RuntimeException
@@ -58,7 +55,7 @@ class SpritesTestCase extends ImagineTestCase
     /**
      * Clears the given directory.
      *
-     * @param string $directory
+     * @param  string $directory
      * @return void
      */
     protected function clearDirectory($directory)
@@ -72,7 +69,7 @@ class SpritesTestCase extends ImagineTestCase
             if (!in_array($file, array('.', '..'))) {
                 if (is_link($directory.'/'.$file)) {
                     unlink($directory.'/'.$file);
-                } else if (is_dir($directory.'/'.$file)) {
+                } elseif (is_dir($directory.'/'.$file)) {
                     $this->clearDirectory($directory.'/'.$file);
                     rmdir($directory.'/'.$file);
                 } else {
@@ -87,8 +84,8 @@ class SpritesTestCase extends ImagineTestCase
     /**
      * Returns an ImagineInterface instance.
      *
-     * @param string $driver (optional)
-     * @return \Imagine\ImagineInterface
+     * @param  string           $driver (optional)
+     * @return ImagineInterface
      */
     protected function getImagine($driver = null)
     {
@@ -123,12 +120,28 @@ class SpritesTestCase extends ImagineTestCase
     /**
      * Returns a Color instance.
      *
-     * @param array|string $color (optional)
-     * @param integer $alpha (optional)
-     * @return \Imagine\Image\Color
+     * @param  array|string $color (optional)
+     * @param  integer      $alpha (optional)
+     * @return Color
      */
     protected function getColor($color = array(255, 255, 255), $alpha = 100)
     {
         return new Color($color, $alpha);
+    }
+
+    /**
+     * Asserts that two images are equal using color histogram comparison method
+     *
+     * @param ImageInterface $expected
+     * @param ImageInterface $actual
+     * @param string         $message
+     * @param float          $delta
+     * @param integer        $buckets
+     */
+    public static function assertImageEquals($expected, $actual, $message = '', $delta = 0.1, $buckets = 4)
+    {
+        $constraint = new IsImageEqual($expected, $delta, $buckets);
+
+        self::assertThat($actual, $constraint, $message);
     }
 }

@@ -1,3 +1,4 @@
-/composer.phar
-/phpunit.xml
-/vendor
+build/*
+composer.phar
+phpunit.xml
+vendor/*

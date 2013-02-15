@@ -70,7 +70,7 @@ A simple configuration of a ``Sprites\ProcessorInterface`` requires a
     $config->setImage('web/images/icons.png');
     $config->setStylesheet('web/css/icons.css');
     $config->getFinder()->name('*.png')->in('web/images/icons');
-    $config->setSelector(".icon.{{filename}}{background-position:{{pointer}}px 0px}\n");
+    $config->setSelector(".icon.{{filename}}{background-position:{{x}}px {{y}}px}\n");
 
     $processor = new DynamicProcessor();
     $processor->process($config);
@@ -211,13 +211,14 @@ stylesheet.
 .. note::
 
     The default value of the ``selector`` is
-    ``".{{filename}}{background-position:{{pointer}}px 0px}\n"``.
+    ``".{{filename}}{background-position:{{x}}px {{y}}px}\n"``.
 
 .. note::
 
     The string is parsed with `Mustache`_ and there are two available parameters:
 
-    - **``pointer``:** horizontal position of current pointer (in ``px``)
+    - **``x``:** horizontal position of current pointer (in ``px``)
+    - **``y``:** vertical position of current pointer (in ``px``)
     - **``filename``:** an `ASCIIfied`_ version of the filename.
 
 Usage

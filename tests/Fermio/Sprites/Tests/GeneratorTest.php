@@ -1,21 +1,21 @@
 <?php
 
 /*
- * This file is part of the Sprites package.
+ * This file is part of the Fermio Sprites package.
  *
- * (c) Pierre Minnieur <pm@pierre-minnieur.de>
+ * (c) Pierre Minnieur <pierre@ferm.io>
  *
  * For the full copyright and license information, please view the LICENSE file
  * that was distributed with this source code.
  */
 
-namespace Sprites\Tests;
+namespace Fermio\Fermio\Sprites\Tests;
 
-use Sprites\Configuration;
-use Sprites\Generator;
-use Sprites\Processor\DynamicProcessor;
-use Sprites\Processor\FixedProcessor;
-use Sprites\Test\SpritesTestCase;
+use Fermio\Sprites\Configuration;
+use Fermio\Sprites\Generator;
+use Fermio\Sprites\Processor\DynamicProcessor;
+use Fermio\Sprites\Processor\FixedProcessor;
+use Fermio\Sprites\Test\SpritesTestCase;
 
 class GeneratorTest extends SpritesTestCase
 {
@@ -26,7 +26,7 @@ class GeneratorTest extends SpritesTestCase
         $dynamic->setColor($this->getColor());
         $dynamic->setImage(sprintf('%s/flags.png', $this->path));
         $dynamic->setStylesheet(sprintf('%s/flags.css', $this->path));
-        $dynamic->setSelector(".flag.{{filename}}{background-position:{{pointer}}px 0px}\n");
+        $dynamic->setSelector(".flag.{{filename}}{background-position:{{x}}px {{y}}px}\n");
         $dynamic->getFinder()->name('*.png')->in(__DIR__.'/Fixtures/flags')->sortByName();
 
         $fixed = new Configuration();
@@ -34,7 +34,7 @@ class GeneratorTest extends SpritesTestCase
         $fixed->setColor($this->getColor());
         $fixed->setImage(sprintf('%s/icons.png', $this->path));
         $fixed->setStylesheet(sprintf('%s/icons.css', $this->path));
-        $fixed->setSelector(".icon.{{filename}}{background-position:{{pointer}}px 0px}\n");
+        $fixed->setSelector(".icon.{{filename}}{background-position:{{x}}px {{y}}px}\n");
         $fixed->getFinder()->name('*.png')->in(__DIR__.'/Fixtures/icons')->sortByName();
         $fixed->setWidth(16);
 

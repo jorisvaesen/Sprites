@@ -1,33 +1,31 @@
 <?php
 
 /*
- * This file is part of the Sprites package.
+ * This file is part of the Fermio Sprites package.
  *
- * (c) Pierre Minnieur <pm@pierre-minnieur.de>
+ * (c) Pierre Minnieur <pierre@ferm.io>
  *
  * For the full copyright and license information, please view the LICENSE file
  * that was distributed with this source code.
  */
 
-namespace Sprites\Command;
+namespace Fermio\Sprites\Command;
 
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputInterface;
-
-use Sprites\Configuration;
-
+use Fermio\Sprites\Configuration;
 use Imagine\Gd;
 use Imagine\Gmagick;
 use Imagine\Imagick;
 use Imagine\Image\Color;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputInterface;
 
 abstract class GenerateSpritesCommand extends Command
 {
     /**
      * Returns a Configuration instance.
      *
-     * @param \Symfony\Component\Console\Input\InputInterface $input
-     * @return \Falsep\Sprites\Configuration
+     * @param  InputInterface $input
+     * @return Configuration
      */
     protected function getConfiguration(InputInterface $input)
     {
@@ -51,9 +49,8 @@ abstract class GenerateSpritesCommand extends Command
     /**
      * Returns an ImagineInterface instance.
      *
-     * @param string $driver (optional)
-     * @return \Imagine\ImagineInterface
-     *
+     * @param  string            $driver (optional)
+     * @return ImagineInterface
      * @throws \RuntimeException
      */
     protected function getImagine($driver = null)
