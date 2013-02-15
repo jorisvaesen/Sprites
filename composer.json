@@ -16,6 +16,9 @@
         "symfony/console": "~2.0",
         "symfony/finder": "~2.0"
     },
+    "replace": {
+        "pminnieur/sprites": "~0.1"
+    },
     "autoload": {
         "psr-0": {
             "Fermio\\Sprites\\": "src"

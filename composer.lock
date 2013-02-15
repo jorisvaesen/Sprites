@@ -1,5 +1,5 @@
 {
-    "hash": "ce4203a06c7dcd196a64ccb4edbfc127",
+    "hash": "59ff85d6c9e6837105a816b2af73da71",
     "packages": [
         {
             "name": "imagine/Imagine",
@@ -46,47 +46,6 @@
                 "graphics",
                 "image manipulation",
                 "image processing"
-            ]
-        },
-        {
-            "name": "phly/mustache",
-            "version": "1.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/weierophinney/phly_mustache",
-                "reference": "1.2.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/weierophinney/phly_mustache/zipball/1.2.0",
-                "reference": "1.2.0",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "time": "2012-07-31 20:33:14",
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Phly": "library/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Matthew Weier O'Phinney",
-                    "email": "me@mwop.net",
-                    "homepage": "http://mwop.net/"
-                }
-            ],
-            "description": "PHP 5.3 Mustache Implementation",
-            "homepage": "http://wiki.github.com/weierophinney/phly_mustache/",
-            "keywords": [
-                "mustache"
             ]
         },
         {
