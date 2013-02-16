@@ -9,11 +9,6 @@ Contents:
 Installation
 ------------
 
-Phar file *(coming soon)*
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Coming soon.
-
 Composer
 ~~~~~~~~
 
@@ -21,7 +16,7 @@ Add the following entry to your ``composer.json``:
 
 .. code-block:: json
 
-    { "require": { "pminnieur/sprites": "dev-master" }}
+    { "require": { "fermio/sprites": "0.3.*@dev" }}
 
 Checkout `detailed package information on Packagist`_.
 
@@ -32,7 +27,7 @@ Clone Sprites git repository:
 
 .. code-block:: console
 
-    git clone git://github.com/pminnieur/sprites.git
+    git clone git://github.com/fermio/Sprites.git
 
 Download ``composer.phar`` file and install dependencies:
 
@@ -50,15 +45,15 @@ Run ``sprites`` executable from ``bin`` directory:
 Configuration
 -------------
 
-A simple configuration of a ``Sprites\ProcessorInterface`` requires a
-``Sprites\Configuration`` instance
+A simple configuration of a ``Fermio\Sprites\ProcessorInterface`` requires a
+``Fermio\Sprites\Configuration`` instance
 
 .. code-block:: php
 
     <?php
 
-    use Sprites\Configuration;
-    use Sprites\Processor\DynamicProcessor;
+    use Fermio\Sprites\Configuration;
+    use Fermio\Sprites\Processor\DynamicProcessor;
     use Imagine\Gd\Imagine;
     use Imagine\Image\Color;
 
@@ -80,7 +75,7 @@ A simple configuration of a ``Sprites\ProcessorInterface`` requires a
 Configuration Options
 ~~~~~~~~~~~~~~~~~~~~~
 The following sections describe all the configuration options available on a
-``Sprites\Configuration`` instance.
+``Fermio\Sprites\Configuration`` instance.
 
 Imagine (***REQUIRED***)
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -155,16 +150,16 @@ Processor (***OPTIONAL***)
     $config->setProcessor($processor);
     $config->getProcessor();
 
-The name of the ``Sprites\Processor\ProcessorInterface`` to use. This
-configuration value is only needed if you use the ``Sprites\Generator``
+The name of the ``Fermio\Sprites\Processor\ProcessorInterface`` to use. This
+configuration value is only needed if you use the ``Fermio\Sprites\Generator``
 and may be guessed automatically, depending if you set a fixed width or not.
 
 .. note::
 
     Sprites already supports two different kind of processors:
 
-    - **dynamic:** ``Sprites\Processor\DynamicProcessor``
-    - **fixed:** ``Sprites\Processor\FixedProcessor``
+    - **dynamic:** ``Fermio\Sprites\Processor\DynamicProcessor``
+    - **fixed:** ``Fermio\Sprites\Processor\FixedProcessor``
 
 Width (***OPTIONAL***)
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -175,12 +170,12 @@ Width (***OPTIONAL***)
     $config->getWidth();
 
 A fixed width for each image in the sprite. This configuration value is only
-used in the ``Sprites\Processor\FixedProcessor`` and speeds up generating
-the image sprite.
+used in the ``Fermio\Sprites\Processor\FixedProcessor`` and speeds up
+generating the image sprite.
 
 .. note::
 
-    The ``Sprites\Processor\FixedProcessor`` could optionally resize
+    The ``Fermio\Sprites\Processor\FixedProcessor`` could optionally resize
     your images if they exceed the fixed width.
 
 Stylesheet (***REQUIRED***)
@@ -215,11 +210,11 @@ stylesheet.
 
 .. note::
 
-    The string is parsed with `Mustache`_ and there are two available parameters:
+    The string is parsed with two available parameters:
 
-    - **``x``:** horizontal position of current pointer (in ``px``)
-    - **``y``:** vertical position of current pointer (in ``px``)
-    - **``filename``:** an `ASCIIfied`_ version of the filename.
+    - **``{{x}}``:** horizontal position of current pointer (in ``px``)
+    - **``{{y}}``:** vertical position of current pointer (in ``px``)
+    - **``{{filename}}``:** an `ASCIIfied`_ version of the filename.
 
 Usage
 -----
@@ -236,8 +231,8 @@ with a dynamic width and height.
 
     <?php
 
-    use Sprites\Configuration;
-    use Sprites\Processor\DynamicProcessor;
+    use Fermio\Sprites\Configuration;
+    use Fermio\Sprites\Processor\DynamicProcessor;
 
     $config = new Configuration();
     // ... configure your configuration
@@ -268,8 +263,8 @@ are two main differences:
 
     <?php
 
-    use Sprites\Configuration;
-    use Sprites\Processor\FixedProcessor;
+    use Fermio\Sprites\Configuration;
+    use Fermio\Sprites\Processor\FixedProcessor;
 
     $config = new Configuration();
     $config->setWidth(16); // fixed width of 16px per image
@@ -281,18 +276,18 @@ are two main differences:
 Generator
 ~~~~~~~~~
 
-The ``Sprites\Generator`` class is used for batch processing multiple
-``Sprites\Configuration`` instances with their corresponding
-``Sprites\Processor\ProcessorInterface`` instances.
+The ``Fermio\Sprites\Generator`` class is used for batch processing multiple
+``Fermio\Sprites\Configuration`` instances with their corresponding
+``Fermio\Sprites\Processor\ProcessorInterface`` instances.
 
 .. code-block:: php
 
     <?php
 
-    use Sprites\Configuration;
-    use Sprites\Generator;
-    use Sprites\Processor\DynamicProcessor;
-    use Sprites\Processor\FixedProcessor;
+    use Fermio\Sprites\Configuration;
+    use Fermio\Sprites\Generator;
+    use Fermio\Sprites\Processor\DynamicProcessor;
+    use Fermio\Sprites\Processor\FixedProcessor;
     // ... add your processor classes
 
     $generator = new Generator();
@@ -312,7 +307,7 @@ The ``Sprites\Generator`` class is used for batch processing multiple
 
 Command Line Interface
 ~~~~~~~~~~~~~~~~~~~~~~
-The Sprites Console is a Command Line Interface tool for simplifying the usage
+The Sprites console is a Command Line Interface tool for simplifying the usage
 and generation of image sprites without the need of you actually writing a
 single line of PHP code.
 
@@ -333,7 +328,6 @@ a fixed width dimension::
 .. _`Imagine`: https://github.com/avalanche123/Imagine
 .. _`Symfony`: http://symfony.com/
 .. _`Finder`: http://symfony.com/doc/current/cookbook/tools/finder.html#index-0
-.. _`Mustache`: https://github.com/weierophinney/phly_mustache
 .. _`ASCIIfied`: http://sourcecookbook.com/en/recipes/8/function-to-slugify-strings-in-php
 .. _`famfamfam`: http://famfamfam.com/
-.. _`detailed package information on Packagist`: http://packagist.org/packages/pminnieur/sprites
+.. _`detailed package information on Packagist`: http://packagist.org/packages/fermio/sprites
