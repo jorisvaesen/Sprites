@@ -1,4 +1,6 @@
+api/*
 build/*
+cache/*
 composer.lock
 composer.phar
 phpunit.xml
