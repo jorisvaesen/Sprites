@@ -82,4 +82,41 @@ abstract class GenerateSpritesCommand extends Command
                 return new Imagick\Imagine();
         }
     }
+
+    /**
+     * Returns the Imagine class name.
+     *
+     * @param  string            $driver (optional)
+     * @return string Imagine class
+     * @throws \RuntimeException
+     */
+    public static function getImagineClass($driver = null)
+    {
+        if (null === $driver) {
+            switch (true) {
+                case function_exists('gd_info'):
+                    $driver = 'gd';
+                    break;
+                case class_exists('Gmagick'):
+                    $driver = 'gmagick';
+                    break;
+                case class_exists('Imagick'):
+                    $driver = 'imagick';
+                    break;
+            }
+        }
+
+        if (!in_array($driver, array('gd', 'gmagick', 'imagick'))) {
+            throw new \RuntimeException(sprintf('Driver "%s" does not exist.', $driver));
+        }
+
+        switch (strtolower($driver)) {
+            case 'gd':
+				return 'Imagine\Gd\Imagine';
+            case 'gmagick':
+                return 'Imagine\Gmagick\Imagine';
+            case 'imagick':
+                return 'Imagine\Imagick\Imagine';
+        }
+    }
 }
