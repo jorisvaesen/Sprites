@@ -11,7 +11,7 @@
         "homepage": "http://ferm.io/"
     }],
     "require": {
-        "php": "~5.3",
+        "php": ">5.3",
         "imagine/Imagine": "*",
         "symfony/console": "~2.0",
         "symfony/finder": "~2.0"
