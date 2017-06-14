@@ -141,7 +141,7 @@ abstract class AbstractProcessor implements ProcessorInterface
 
         }
 
-        $styles = "." . $config->getDefaultClass() . "{background-image:url('". $config->getCssImagePath() ."')}\n\n" . $styles;
+        $styles = "." . $config->getDefaultClass() . "{background-image:url('". $config->getCssImagePath() ."');display:inline-block}\n\n" . $styles;
         
         if (false === @file_put_contents($config->getStylesheet(), $styles)) {
             // @codeCoverageIgnoreStart
