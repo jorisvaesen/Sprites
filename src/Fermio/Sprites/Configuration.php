@@ -81,7 +81,7 @@ class Configuration
      *
      * @var string
      */
-    private $selector = ".{{filename}}{background-position:{{x}}px {{y}}px}\n";
+    private $selector = ".{{filename}}{background-position:{{x}}px {{y}}px;width:{{w}}px;height:{{h}}px}\n";
 
     /**
      * Returns the ImagineInterface instance.
