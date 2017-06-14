@@ -12,7 +12,7 @@
 namespace Fermio\Sprites;
 
 use Imagine\Image\ImagineInterface;
-use Imagine\Image\Color;
+use Imagine\Image\Palette\RGB;
 use Symfony\Component\Finder\Finder;
 
 class Configuration
@@ -188,7 +188,7 @@ class Configuration
      * @param  Color $color The Color instance.
      * @return void
      */
-    public function setColor(Color $color)
+    public function setColor(RGB $color)
     {
         $this->color = $color;
     }
