@@ -84,6 +84,20 @@ class Configuration
     private $selector = ".{{filename}}{background-position:{{x}}px {{y}}px;width:{{w}}px;height:{{h}}px}\n";
 
     /**
+     * The default CSS background setting the sprite as background image.
+     *
+     * @var string
+     */
+    private $defaultClass = "sprite-icon";
+    
+    /**
+     * The path to use in the generated CSS file to reference the generated sprite.
+     *
+     * @var string
+     */
+    private $cssImagePath = "../img/sprite.png";
+    
+    /**
      * Returns the ImagineInterface instance.
      *
      * @return ImagineInterface
@@ -283,5 +297,47 @@ class Configuration
     public function setSelector($selector)
     {
         $this->selector = $selector;
+    }
+    
+    /**
+     * Returns the default CSS class.
+     *
+     * @return string
+     */
+    public function getDefaultClass()
+    {
+        return $this->defaultClass;
+    }
+    
+    /**
+     * Sets the default CSS class.
+     *
+     * @param  string $className The CSS class name
+     * @return void
+     */
+    public function setDefaultClass($className)
+    {
+        $this->defaultClass = $className;
+    }
+    
+    /**
+     * Returns the CSS image path.
+     *
+     * @return string
+     */
+    public function getCssImagePath()
+    {
+        return $this->cssImagePath;
+    }
+    
+    /**
+     * Sets the CSS image path.
+     *
+     * @param  string $path The CSS image path
+     * @return void
+     */
+    public function setCssImagePath($path)
+    {
+        $this->cssImagePath = $path;
     }
 }
