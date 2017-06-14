@@ -1,5 +1,5 @@
 {
-    "name": "fermio/sprites",
+    "name": "jorisvaesen/sprites",
     "type": "library",
     "description": "A simple image sprite and stylesheet generator.",
     "keywords": ["sprites"],
