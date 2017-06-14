@@ -49,7 +49,7 @@ class DynamicProcessor extends AbstractProcessor
             $sprite->paste($image, new Point($pointer, 0));
 
             // append stylesheet code
-            $styles .= $this->parseSelector($config->getSelector(), $file, $pointer, $image->getSize()->getWidth(), $image->getSize()->getHeight());
+            $styles .= $this->parseSelector($config->getSelector(), $file, $pointer, 0, $image->getSize()->getWidth(), $image->getSize()->getHeight());
 
             // move horizontal cursor
             $pointer += $image->getSize()->getWidth();
