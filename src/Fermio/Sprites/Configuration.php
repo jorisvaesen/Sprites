@@ -12,7 +12,7 @@
 namespace Fermio\Sprites;
 
 use Imagine\Image\ImagineInterface;
-use Imagine\Image\Palette\RGB;
+use Imagine\Image\Palette\Color\RGB;
 use Symfony\Component\Finder\Finder;
 
 class Configuration
