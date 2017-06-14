@@ -83,11 +83,11 @@ abstract class AbstractProcessor implements ProcessorInterface
      * @param  integer      $y        (optional) The vertical position
      * @return string
      */
-    protected function parseSelector($selector, \SplFileInfo $file, $x, $y = 0)
+    protected function parseSelector($selector, \SplFileInfo $file, $x, $y = 0, $w = 0, $h = 0)
     {
         return str_replace(
-            array('{{filename}}', '{{x}}', '{{y}}'),
-            array($this->asciify($file), $x, $y),
+            array('{{filename}}', '{{x}}', '{{y}}', '{{w}}', '{{h}}'),
+            array($this->asciify($file), $x, $y, $w, $h),
             $selector
         );
     }
